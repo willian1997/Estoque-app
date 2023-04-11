@@ -1,8 +1,8 @@
 export class Cliente 
 {
     id?: number;
-    nome: string | underfined;
-    email: string | underfined;
-    senha: string | underfined;
+    nome: string | undefined;
+    email: string | undefined;
+    senha: string | undefined;
 }
 
