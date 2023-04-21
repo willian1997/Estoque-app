@@ -21,7 +21,7 @@ listaClientes: Cliente[] = [];
 
   buscarClientes(){
     this.clienteService.getAll().subscribe(dados => {
-      this.listaClientes = dados as Cliente[];
+      this.listaClientes = dados;
     });
   }
 }

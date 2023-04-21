@@ -1,3 +1,4 @@
+import { catchError, EMPTY, map, Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Cliente } from '../models/Cliente.model';
@@ -15,8 +16,11 @@ export class ClientesService {
     return this.http.post(this.url, cliente);
   }
 
-  getAll(){
-    return this.http.get(this.url);
+  getAll(): Observable<Cliente[]>{
+    return this.http.get<Cliente[]>(this.url).pipe(
+      map(retorno => retorno),
+      catchError((erro) => this.exibirErro(erro))
+    );
   }
 
   getOne(id: number){
@@ -34,4 +38,11 @@ export class ClientesService {
   login(){}
 
   loggout(){}
+
+
+  exibirErro(erro: any): Observable<any>{
+    alert('Deu Erro!!!!!');
+    console.log(erro);
+    return EMPTY;
+  }
 }
